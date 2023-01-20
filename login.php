@@ -26,7 +26,7 @@ if(isset($_GET['aviso'])){
 }
 if(isset($_GET['logout'])){
     session_destroy();
-    header('location:inicio.php');
+    header('location:index.php');
 }
 
 include "conn.php";
@@ -213,5 +213,10 @@ echo  "<b>$nome, você gostaria de ver as suas indicações de produtos?</b>";
 <form action="produtos.php" method="POST">
     <input type="submit" name="gravar" value="Ver produtos"/>
 </form>
-
+<style>
+    body {
+    background-color: #92a8d1;
+    color:#fff;
+}
+</style>
 

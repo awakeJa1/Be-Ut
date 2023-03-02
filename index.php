@@ -5,7 +5,7 @@
           <a class="header-menu-item">Recentes</a>
           <a class="header-menu-item">Carrinho</a>
           <a class="header-menu-item">Configurações</a>
-        <button class="logout-button" type="button" name="logout">Sair</button>
+        <button class="logout-button" type="button" name="logout" style="color: #000;">Sign in/out</button>
       </nav>
   </header>
 
@@ -37,7 +37,7 @@ body {
     color:#000;
     margin: 0px;
 }
-* { color:#000; text-decoration: none;}
+* { color:#fff; text-decoration: none;}
 
 .header { 
   background-color: #6D3BFF;
@@ -165,8 +165,8 @@ if($login->rowCount()==0){
 }
 }
 ?>
-<h3>First time here?</h3>
-Register now! 
+<p style="font-family: inconsolata; color: #ffff; "> First time here? </br></br> Register now! </p>
+
 <form action="cadastro.php" method="POST">
 </br>
 <input type="submit" name="register" value="register" class="register"/>

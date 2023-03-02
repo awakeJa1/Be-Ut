@@ -1,5 +1,5 @@
 <header class="header"> <!--cabeçalho da página, tudo em verde-->
-    <p class="header-name">Be-UT</p>
+    <a class="header-name" href="index.php">Be-UT</a>
       <nav class="header-menu">
           <a class="header-menu-item">Promoções</a>
           <a class="header-menu-item">Recentes</a>
@@ -9,42 +9,87 @@
       </nav>
   </header>
 
-<h1>
-  <b href="" style="font-family: inconsolata;" class="typewrite" data-period="2000" data-type='[ "Welcome to: be-ut.","ようこそ: be-ut." ]'>
-    <span class="wrap"></span>
-</b>
-<tag1 style="font-size:18;font-family: inconsolata">
-</br> </br>your best buddy in cosmetics recomendation
-</tag1>
-</h1>
+<head> 
+  <title>Faça seu cadastro</title>
+  <body>
+</head>
+<body>
+<h1 style="font-family: inconsolata; color: #ffff; font-size: 20px">
+Be-UT </br></br> 
+(Beauty User Targeting) </br></br> 
+Faça seu cadastro para indicação de produtos:</h1>
+</body>
+
+
+<form action="login.php" method="POST" style="font-family: inconsolata; color: #ffff;">
+    Digite seu nome: <input type="text" name="nome"/></br></br>
+    Digite sua idade: <input type="number" name="idade"/></br></br>
+    Qual seu sexo? <select name="sexo">
+        <option value="Não respondido">   </option>
+        <option value="Feminino">Feminino</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Outro">Outro</option>
+</select> </br></br>
+    Digite seu email: <input type="email" name="email"/></br>
+    <body>
+        <h3>Responda a este questionário:</h3>
+    Escolha o tipo de cabelo: <select name="tpcabelo" required>
+        <option value="Não respondido">    </option>
+        <option value="Liso">Liso</option>
+        <option value="Ondulado">Ondulado</option>
+        <option value="Cacheado">Cacheado</option>
+        <option value="Crespo">Crespo</option>
+</select>
+    </br></br>
+    Escolha o tipo de pele: <select name="tppele">
+        <option value="Não respondido">      </option>
+        <option value="Normal">Normal</option>
+        <option value="Seca">Seca</option>
+        <option value="Mista">Mista</option>
+        <option value="Oleosa">Oleosa</option>
+</select>
+    </br></br>
+    Utiliza produtos testados em animais: <select name="origem">
+        <option value="Não respondido">   </option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+</select>
+</br></br>
+
+    Utiliza produtos de origem animal: <select name="teste">
+        <option value="Não respondido">   </option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+        </select>
+</br></br>
+
+    Seu cabelo já passou por alguma química? <select name="quimica">
+        <option value="Não respondido">   </option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+</select>
+<br/>
+<br/>
+<input type="submit" name="gravar" value="Continue"/>
+</form>
 
 <style>
-
-.register{
-    color: #000;
-    font-size: 15px;
-}
-
-.login{
-    color: #000;
-    font-size: 15px;
-}
-
 body {
-    background-color: #0000;
+    background-color: #7678FF;
     text-align: center;
     vertical-align:top;
     color:#000;
+    margin: 0px;
 }
-* { color:#000; text-decoration: none;}
 
 .header { 
-  background-color: #1DA2FF;
+  background-color: #6D3BFF;
   font-family: 'Inconsolata', monospace;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 18px;
 }
 
 .header-name { /* apenas o Be-UT */
@@ -65,108 +110,21 @@ body {
 }
 </style>
 
-<script>
-var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
 
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
-
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
-
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-
-        var that = this;
-        var delta = 200 - Math.random() * 100;
-
-        if (this.isDeleting) { delta /= 2; }
-
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 500;
-        }
-
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
-
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-        document.body.appendChild(css);
-    };
-
-</script>
-
-<form action="login.php" method="post">
-    <input type="text" name="user"
-    placeholder="Login"/>
-    <br/></br>
-    <input type="password" name="senha"
-    placeholder="Senha"/>
-    <br/></br>
-    <form action="login.php" method="POST">
-    </br>
-    <input type="submit" name="login" value="login" class="login"/>
-</form> 
-
-</form>
-<!--fim do questionario-->
-
-<!--aqui eu n sei oq faz pq foi a isa q fez kk-->
+<!--abaixo é o começo da gravação de dados no banco-->
 <?php
-include 'conn.php';
-if(isset($_POST['logar'])){
-$user=$_POST['user'];
-$senha=$_POST['senha'];
-$login=$conn->prepare('SELECT * FROM 
-`perfil` WHERE `ds_login`= :puser
-AND `ds_senha`=:psenha;');
-$login->bindValue(':puser',$user);
-$login->bindValue(':psenha',$senha);
-$login->execute();
-if($login->rowCount()==0){
-    echo "Login ou senha inválido!";
-}else{
-    session_start();
-    $row=$login->fetch();
-    echo $row['id_perfil'];
-    $_SESSION['user']=$row['id_perfil'];
-    header('location:produtos.php');
+
+include "conn.php";
+if(isset($_POST['grava'])){
+    $senha=$_POST['senha'];
+    $email=$_POST['email'];
+    $grava=$conn->prepare('INSERT 
+    INTO `usuario` (`id_usuario`, 
+    `ds_senha`, `ds_email`) VALUES 
+    (NULL, :pemail , :psenha);');
+    $grava->bindValue(':psenha',$senha);
+    $grava->bindValue(':pemail',$email);
+    $grava->execute();
 }
-}
+
 ?>
-<h3>First time here?</h3>
-Register now! 
-<form action="cadastro.php" method="POST">
-</br>
-<input type="submit" name="register" value="register" class="register"/>
-</form>  
-</body>

@@ -1,7 +1,7 @@
 <header class="header"> <!--cabeçalho da página, tudo em verde-->
     <p class="header-name">Be-UT</p>
       <nav class="header-menu">
-          <a class="header-menu-item">Promoções</a>
+          <a class="header-menu-item" href="produtos.php">Produtos</a>
           <a class="header-menu-item">Recentes</a>
           <a class="header-menu-item">Carrinho</a>
           <a class="header-menu-item">Configurações</a>

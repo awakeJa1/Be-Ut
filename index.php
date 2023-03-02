@@ -65,6 +65,15 @@ body {
   color: #ffff;
   font-size: 15px;
 }
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #6D3BFF;
+  color: white;
+  position: relative; bottom: -466px;
+  font-family: inconsolata;
+}
 </style>
 
 <script>
@@ -172,3 +181,7 @@ if($login->rowCount()==0){
 <input type="submit" name="register" value="register" class="register"/>
 </form>  
 </body>
+
+<footer>
+  <p>Be-Ut.com</p>
+</footer>

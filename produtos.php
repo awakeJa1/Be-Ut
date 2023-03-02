@@ -86,6 +86,9 @@
     </main>    
 </body>
 <tr>
+<footer>
+  <p>Be-Ut.com</p>
+</footer>
 <style>
 *{
     padding: 0;
@@ -177,7 +180,6 @@ figcaption{
 
 body {
     background-color: #7678FF;
-    color:#fff;
 }
 
 .header { 
@@ -205,6 +207,15 @@ body {
   font-family: 'Inconsolata', monospace;
   color: #ffff;
   font-size: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #6D3BFF;
+  color: white;
+  position: relative; bottom: -420px;
+  font-family: inconsolata;
 }
 </style>
 

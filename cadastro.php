@@ -100,8 +100,20 @@ body {
   clear: both;
   display: table;
 }
+
+footer {
+  text-align: center;
+  font-family: inconsolata;
+  padding: 3px;
+  background-color: #6D3BFF;
+  color: white;
+  position: relative; bottom: -466px;
+}
 </style>
 
+<footer>
+  <p>Be-Ut.com</p>
+</footer>
 
 <!--abaixo é o começo da gravação de dados no banco-->
 <?php

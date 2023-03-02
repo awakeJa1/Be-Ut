@@ -7,7 +7,7 @@
 
 <body>
   <header class="header"> <!--cabeçalho da página, tudo em verde-->
-    <a class="header-name" href="https://vandal-us.s3.amazonaws.com/spree/products/76330/original/open-uri20181204-14-1e683p8.jpg">Be-UT</a>
+    <a class="header-name" href="index.php">Be-UT</a>
       <nav class="header-menu">
           <a class="header-menu-item">Promoções</a>
           <a class="header-menu-item">Recentes</a>

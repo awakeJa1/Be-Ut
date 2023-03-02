@@ -9,7 +9,7 @@
 </body>
 
 
-<form action="rg2.php" method="POST">
+<form action="rg2.php" method="POST" style="font-family: inconsolata;">
 
     <input type="text" name="email"
     placeholder="email"/><br/><br/>
@@ -17,16 +17,16 @@
     <input type="text" name="senha"
     placeholder="senha"/><br/><br/>
 
-    <input type="submit" name="grava"
-    value="Gravar"/>
+    <input type="submit" name="register"
+    value="Continue"/>
 </form>
 
 <style>
 body {
-    background-color: #92a8d1;
+    background-color: #fff;
     text-align: center;
     vertical-align:top;
-    color:#fff;
+    color:#000;
 }
 </style>
 

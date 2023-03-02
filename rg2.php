@@ -1,50 +1,172 @@
-<head> 
-  <title>Faça seu cadastro</title>
-  <body>
-</head>
-<body>
-<h1>Be-UT</h1>
-<h3>(Beauty User Targeting)</h3>
-<h3>Faça seu cadastro para indicação de produtos:</h3>
-</body>
+<header class="header"> <!--cabeçalho da página, tudo em verde-->
+    <p class="header-name">Be-UT</p>
+      <nav class="header-menu">
+          <a class="header-menu-item">Promoções</a>
+          <a class="header-menu-item">Recentes</a>
+          <a class="header-menu-item">Carrinho</a>
+          <a class="header-menu-item">Configurações</a>
+        <button class="logout-button" type="button" name="logout">Sair</button>
+      </nav>
+  </header>
 
-
-<form action="rg2.php" method="POST">
-
-    <input type="text" name="email"
-    placeholder="email"/><br/><br/>
-
-    <input type="text" name="senha"
-    placeholder="senha"/><br/><br/>
-
-    <input type="submit" name="grava"
-    value="Gravar"/>
-</form>
+<h1>
+  <b href="" style="font-family: inconsolata;" class="typewrite" data-period="2000" data-type='[ "Welcome to: be-ut.","ようこそ: be-ut." ]'>
+    <span class="wrap"></span>
+</b>
+<tag1 style="font-size:18;font-family: inconsolata">
+</br> </br>your best buddy in cosmetics recomendation
+</tag1>
+</h1>
 
 <style>
+
+.register{
+    color: #000;
+    font-size: 15px;
+}
+
+.login{
+    color: #000;
+    font-size: 15px;
+}
+
 body {
-    background-color: #92a8d1;
+    background-color: #0000;
     text-align: center;
     vertical-align:top;
-    color:#fff;
+    color:#000;
+}
+* { color:#000; text-decoration: none;}
+
+.header { 
+  background-color: #1DA2FF;
+  font-family: 'Inconsolata', monospace;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-name { /* apenas o Be-UT */
+  font-family: 'Inconsolata', monospace;
+  color: #fff;
+  font-size: 15px;
+}
+
+.header-menu { /* caixinha q engloba os 4 menus */
+  display: flex;
+  gap: 25px;
+}
+
+.header-menu-item { /* configuração individual dos 4 menus */
+  font-family: 'Inconsolata', monospace;
+  color: #ffff;
+  font-size: 15px;
 }
 </style>
 
+<script>
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
-<!--abaixo é o começo da gravação de dados no banco-->
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+</script>
+
+<form action="login.php" method="post">
+    <input type="text" name="user"
+    placeholder="Login"/>
+    <br/></br>
+    <input type="password" name="senha"
+    placeholder="Senha"/>
+    <br/></br>
+    <form action="login.php" method="POST">
+    </br>
+    <input type="submit" name="login" value="login" class="login"/>
+</form> 
+
+</form>
+<!--fim do questionario-->
+
+<!--aqui eu n sei oq faz pq foi a isa q fez kk-->
 <?php
-
-include "conn.php";
-if(isset($_POST['grava'])){
-    $senha=$_POST['senha'];
-    $email=$_POST['email'];
-    $grava=$conn->prepare('INSERT 
-    INTO `usuario` (`id_usuario`, 
-    `ds_senha`, `ds_email`) VALUES 
-    (NULL, :pemail , :psenha);');
-    $grava->bindValue(':psenha',$senha);
-    $grava->bindValue(':pemail',$email);
-    $grava->execute();
+include 'conn.php';
+if(isset($_POST['logar'])){
+$user=$_POST['user'];
+$senha=$_POST['senha'];
+$login=$conn->prepare('SELECT * FROM 
+`perfil` WHERE `ds_login`= :puser
+AND `ds_senha`=:psenha;');
+$login->bindValue(':puser',$user);
+$login->bindValue(':psenha',$senha);
+$login->execute();
+if($login->rowCount()==0){
+    echo "Login ou senha inválido!";
+}else{
+    session_start();
+    $row=$login->fetch();
+    echo $row['id_perfil'];
+    $_SESSION['user']=$row['id_perfil'];
+    header('location:produtos.php');
 }
-
+}
 ?>
+<h3>First time here?</h3>
+Register now! 
+<form action="cadastro.php" method="POST">
+</br>
+<input type="submit" name="register" value="register" class="register"/>
+</form>  
+</body>

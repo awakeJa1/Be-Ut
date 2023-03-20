@@ -1,21 +1,10 @@
-<header class="header"> <!--cabeçalho da página, tudo em verde-->
-        <a class="header-name" href="index.php">Be-UT</a>
-      <nav class="header-menu">
-          <a class="header-menu-item" href="produtos.php">Produtos</a>
-          <a class="header-menu-item">Recentes</a>
-          <a class="header-menu-item">Carrinho</a>
-          <a class="header-menu-item">Configurações</a>
-        <button class="logout-button" type="button" name="logout" style="color: #000;">Sign in/out</button>
-      </nav>
-  </header>
-
 <head> <!--começo do código para recomendação de produtos -->
     <title>Produtos Recomendados para você</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-    <h1 style="font-size:50;font-family: inconsolata; color: #ffff; text-align: center;"></br>Feed</br></br></h1> 
+    <h1>Produtos recomendados para você</h1> 
     </header>
     <main>
          </style>
@@ -86,14 +75,20 @@
     </main>    
 </body>
 <tr>
-<footer>
-  <p>Be-Ut.com</p>
-</footer>
 <style>
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: #eee; 
+ }
+header{
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 header h1{
     font-family: Arial, Helvetica, sans-serif;
@@ -121,17 +116,20 @@ header h1{
 }
 figcaption{
     display: block;
-    color: white;
-    font-style: inconsolata;
+    background-color: #eee;
+    color: black;
+    font-style: italic;
     padding: 10px;
     text-align: center;
-    background-color: #7678FF;
+    background-color: #92a8d1;
 }
 .buttonimg {
     position: absolute;
 	padding: 16px;
 	width: 200px;
     align: center;
+    background-color: #eee;
+    color: white;
     padding: 16px 32px;
     text-align: center;
     text-decoration: none;
@@ -139,7 +137,7 @@ figcaption{
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    background-color: #7678FF;
+    background-color: #92a8d1;
 }
         
 .button span {
@@ -179,45 +177,13 @@ figcaption{
 }
 
 body {
-    background-color: #7678FF;
+    background-color: #92a8d1;
+    color:#fff;
 }
 
-.header { 
-  background-color: #6D3BFF;
-  font-family: 'Inconsolata', monospace;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 22px;
-}
-
-.header-name { /* apenas o Be-UT */
-  font-family: 'Inconsolata', monospace;
-  color: #fff;
-  font-size: 15px;
-}
-
-.header-menu { /* caixinha q engloba os 4 menus */
-  display: flex;
-  gap: 25px;
-}
-
-.header-menu-item { /* configuração individual dos 4 menus */
-  font-family: 'Inconsolata', monospace;
-  color: #ffff;
-  font-size: 15px;
-}
-
-footer {
-  text-align: center;
-  padding: 3px;
-  background-color: #6D3BFF;
-  color: white;
-  position: relative; bottom: -420px;
-  font-family: inconsolata;
-}
 </style>
 
+<form action="index.php" method="POST">
+<input type="submit" name="voltar" value="voltar" class="voltar"/>
 
 <body>

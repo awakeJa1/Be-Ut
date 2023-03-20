@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Mar-2023 às 02:25
+-- Tempo de geração: 31-Jan-2023 às 21:24
 -- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 7.4.29
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `banco_do_meteus`
+-- Banco de dados: `banco do meteus`
 --
 
 -- --------------------------------------------------------
@@ -31,11 +31,7 @@ CREATE TABLE `caracteristicas` (
   `id_caracteristicas` int(4) NOT NULL,
   `ds_cabelo` varchar(15) DEFAULT NULL,
   `ds_pele` varchar(15) DEFAULT NULL,
-  `ds_quimica` varchar(3) DEFAULT NULL,
-  `ds_oringema` varchar(4) CHARACTER SET armscii8 COLLATE armscii8_bin DEFAULT NULL,
-  `ds_testea` varchar(3) NOT NULL,
-  `ds_corpele` varchar(10) NOT NULL,
-  `ds_calvo` varchar(3) NOT NULL
+  `ds_quimica` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -120,10 +116,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `ds_senha`, `ds_email`) VALUES
 (12, 'joaoielen@gmail.com', '123456'),
-(13, '', ''),
-(14, 'leeodm@hotmail.com', '121213'),
-(15, 'leeodm@hotmail.com', '121213'),
-(16, 'leeloodm@hotmail.com', '121213');
+(13, '', '');
 
 --
 -- Índices para tabelas despejadas
@@ -184,7 +177,7 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

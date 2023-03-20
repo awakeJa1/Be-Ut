@@ -1,8 +1,19 @@
+<header class="header"> <!--cabeçalho da página, tudo em verde-->
+    <p class="header-name">Be-UT</p>
+      <nav class="header-menu">
+          <a class="header-menu-item" href="produtos.php">Produtos</a>
+          <a class="header-menu-item">Recentes</a>
+          <a class="header-menu-item">Carrinho</a>
+          <a class="header-menu-item">Configurações</a>
+        <button class="logout-button" type="button" name="logout" style="color: #000;">Sign in/out</button>
+      </nav>
+  </header>
+
 <h1>
-  <b href="" style="font-family: Verdana;" class="typewrite" data-period="2000" data-type='[ "Welcome to: be-ut.","ようこそ: be-ut." ]'>
+  <b href="" style="font-family: inconsolata;" class="typewrite" data-period="2000" data-type='[ "Welcome to: be-ut.","ようこそ: be-ut." ]'>
     <span class="wrap"></span>
 </b>
-<tag1 style="font-size:18;font-family: Verdana">
+<tag1 style="font-size:18;font-family: inconsolata">
 </br> </br>your best buddy in cosmetics recomendation
 </tag1>
 </h1>
@@ -10,22 +21,59 @@
 <style>
 
 .register{
-    color: #0059ff;
+    color: #000;
     font-size: 15px;
 }
 
 .login{
-    color: #0059ff;
+    color: #000;
     font-size: 15px;
 }
 
 body {
-    background-color: #92a8d1;
+    background-color: #7678FF;
     text-align: center;
     vertical-align:top;
-    color:#fff;
+    color:#000;
+    margin: 0px;
 }
 * { color:#fff; text-decoration: none;}
+
+.header { 
+  background-color: #6D3BFF;
+  font-family: 'Inconsolata', monospace;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+}
+
+.header-name { /* apenas o Be-UT */
+  font-family: 'Inconsolata', monospace;
+  color: #fff;
+  font-size: 15px;
+}
+
+.header-menu { /* caixinha q engloba os 4 menus */
+  display: flex;
+  gap: 25px;
+}
+
+.header-menu-item { /* configuração individual dos 4 menus */
+  font-family: 'Inconsolata', monospace;
+  color: #ffff;
+  font-size: 15px;
+}
+
+footer {
+  text-align: center;
+  padding: 3px;
+  background-color: #6D3BFF;
+  color: white;
+  position: relative; bottom: -466px;
+  font-family: inconsolata;
+}
 </style>
 
 <script>
@@ -126,10 +174,14 @@ if($login->rowCount()==0){
 }
 }
 ?>
-<h3>First time here?</h3>
-Register now! 
+<p style="font-family: inconsolata; color: #ffff; "> First time here? </br></br> Register now! </p>
+
 <form action="cadastro.php" method="POST">
 </br>
 <input type="submit" name="register" value="register" class="register"/>
 </form>  
 </body>
+
+<footer>
+  <p>Be-Ut.com</p>
+</footer>

@@ -1,3 +1,14 @@
+<header class="header"> <!--cabeçalho da página, tudo em verde-->
+    <a class="header-name" href="index.php">Be-UT</a>
+      <nav class="header-menu">
+          <a class="header-menu-item" href="produtos.php">Produtos</a>
+          <a class="header-menu-item">Recentes</a>
+          <a class="header-menu-item">Carrinho</a>
+          <a class="header-menu-item">Configurações</a>
+        <button class="logout-button" type="button" name="logout">Sair</button>
+      </nav>
+  </header>
+
 <head> 
   <title>Faça seu cadastro</title>
   <body>
@@ -6,115 +17,118 @@
 <h1>Be-UT</h1>
 <h3>(Beauty User Targeting)</h3>
 <h3>Faça seu cadastro para indicação de produtos:</h3>
-
 </body>
 
-<form action="index.php" method="POST">
-    Digite seu nome: <input type="text" name="nome"/></br></br>
-    Digite sua idade: <input type="number" name="idade"/></br></br>
-    Qual seu sexo? <select name="sexo">
-        <option value="Não respondido">   </option>
-        <option value="Feminino">Feminino</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Outro">Outro</option>
-</select></br></br>
-    Digite seu email: <input type="email" name="email"/></br></br>
-    Crie usuário: <input type="text" name="usuario"/><br/></br>
-    Crie senha: <input type="password" name="senha"/><br/>
+<form action="rg2.php" method="POST" style="font-family: inconsolata;">
 
-    <body>
-        <h3>Responda a este questionário:</h3>
-    Escolha o tipo de cabelo: <select name="tpcabelo" required>
-        <option value="Não respondido">    </option>
-        <option value="Liso">Liso</option>
-        <option value="Ondulado">Ondulado</option>
-        <option value="Cacheado">Cacheado</option>
-        <option value="Crespo">Crespo</option>
-</select>
-    </br></br>
-    Escolha o tipo de pele: <select name="tppele">
-        <option value="Não respondido">      </option>
-        <option value="Normal">Normal</option>
-        <option value="Seca">Seca</option>
-        <option value="Mista">Mista</option>
-        <option value="Oleosa">Oleosa</option>
-</select>
-    </br></br>
-    Utiliza produtos testados em animais: <select name="origem">
-        <option value="Não respondido">   </option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-</select>
-</br></br>
+    <input type="text" name="email"
+    placeholder="email"/><br/><br/>
 
-    Utiliza produtos de origem animal: <select name="teste">
-        <option value="Não respondido">   </option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-        </select>
-</br></br>
+    <input type="text" name="senha"
+    placeholder="senha"/><br/><br/>
 
-    Seu cabelo já passou por alguma química? <select name="quimica">
-        <option value="Não respondido">   </option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
-</select>
-</select>
-<br/>
-<br/>
-<input type="submit" name="gravar" value="Gravar"/>
+    <input type="submit" name="register"
+    value="Continue"/>
+</form>
+
+<div class="row">
+    <p style="font-size: 20px; font-family: inconsolata;">
+</br>
+        Or login with:
+</br>
+    </p>
+        <img src="https://i.imgur.com/m1sOs3y.png" alt="Snow" width="50" height="50">
+        <img src="https://i.imgur.com/PcDFuo8.png" alt="Forest" width="50" height="50">
+</div>
 
 <style>
-
 body {
-    background-color: #92a8d1;
+    background-color: #7678FF;
     text-align: center;
     vertical-align:top;
-    color:#fff;
+    color:#000;
+    margin: 0px;
 }
 
+.header { 
+  background-color: #6D3BFF;
+  font-family: 'Inconsolata', monospace;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.header-name { /* apenas o Be-UT */
+  font-family: 'Inconsolata', monospace;
+  color: #fff;
+  font-size: 15px;
+}
+
+.header-menu { /* caixinha q engloba os 4 menus */
+  display: flex;
+  gap: 25px;
+}
+
+.header-menu-item { /* configuração individual dos 4 menus */
+  font-family: 'Inconsolata', monospace;
+  color: #ffff;
+  font-size: 15px;
+}
+
+.figure{
+    display: flex;
+    flex-direction: row;
+}
 </style>
 
-</form>  
+<style>
+    * {
+  box-sizing: border-box;
+}
+
+.column {
+
+    display: flex;
+    flex-direction: row;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+footer {
+  text-align: center;
+  font-family: inconsolata;
+  padding: 3px;
+  background-color: #6D3BFF;
+  color: white;
+  position: relative; bottom: -466px;
+}
+</style>
+
+<footer>
+  <p>Be-Ut.com</p>
+</footer>
+
+<!--abaixo é o começo da gravação de dados no banco-->
 <?php
+
 include "conn.php";
-
-if(isset($_POST['gravar'])){
-    $nome=$_POST['nome'];
-    $idade=$_POST['idade'];
-    $sexo=$_POST['sexo'];
-    $email=$_POST['email'];
-    $login=$_POST['usuario'];
+if(isset($_POST['grava'])){
     $senha=$_POST['senha'];
-
-    $cabelo=$_POST['tpcabelo'];
-    $pele=$_POST['tppele'];
-    $origem=$_POST['origem'];
-    $teste=$_POST['teste'];
-    $quimica=$_POST['quimica'];
-    include "conn.php";
-    $grava=$conn->prepare('INSERT INTO `perfil`(`id_perfil`, `nm_perfil`, `ds_idade`, `ds_sexo`, `ds_email`,
-    `ds_login`, `ds_senha`, `ds_cabelo`, `ds_pele`, `ds_teste`, `ds_origem`, `ds_quimica`)
-     VALUES (NULL,:pnm_perfil, :pds_idade,:pds_sexo,:pds_email,:pds_login,:pds_senha,:pds_cabelo,
-     :pdspele,:pds_teste,:pds_origem,:pds_quimica);');
-
-
-
-    $grava->bindValue(':pnm_perfil',$nome);
-    $grava->bindValue(':pds_idade',$idade);
-    $grava->bindValue(':pds_sexo',$sexo);
-    $grava->bindValue(':pds_email',$email);
-    $grava->bindValue(':pds_login',$login);
-    $grava->bindValue(':pds_senha',$senha);
-    $grava->bindValue(':pds_cabelo',$cabelo);
-    $grava->bindValue(':pdspele',$pele);
-    $grava->bindValue(':pds_teste',$teste);
-    $grava->bindValue(':pds_origem',$origem);
-    $grava->bindValue(':pds_quimica',$quimica);
+    $email=$_POST['email'];
+    $grava=$conn->prepare('INSERT 
+    INTO `usuario` (`id_usuario`, 
+    `ds_senha`, `ds_email`) VALUES 
+    (NULL, :pemail , :psenha);');
+    $grava->bindValue(':psenha',$senha);
+    $grava->bindValue(':pemail',$email);
     $grava->execute();
-
-    header('location:login.php');
-    
 }
 
 ?>

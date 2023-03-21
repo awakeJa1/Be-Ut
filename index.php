@@ -14,7 +14,7 @@
     <span class="wrap"></span>
 </b>
 <tag1 style="font-size:18;font-family: inconsolata">
-</br> </br>your best buddy in cosmetics recomendation
+</br> </br><a class="frase">your best buddy in cosmetics recomendation</a>
 </tag1>
 </h1>
 
@@ -24,6 +24,12 @@
     color: #000;
     font-size: 15px;
 }
+.frase{
+    color: #fff;
+}
+.typewrite{
+    color: #fff;
+  }
 
 .login{
     color: #000;
@@ -37,7 +43,6 @@ body {
     color:#000;
     margin: 0px;
 }
-* { color:#fff; text-decoration: none;}
 
 .header { 
   background-color: #6D3BFF;

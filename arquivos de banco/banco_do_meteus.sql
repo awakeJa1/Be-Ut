@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Jan-2023 às 21:24
+-- Tempo de geração: 21-Mar-2023 às 01:21
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -31,7 +31,11 @@ CREATE TABLE `caracteristicas` (
   `id_caracteristicas` int(4) NOT NULL,
   `ds_cabelo` varchar(15) DEFAULT NULL,
   `ds_pele` varchar(15) DEFAULT NULL,
-  `ds_quimica` varchar(3) DEFAULT NULL
+  `ds_quimica` varchar(3) DEFAULT NULL,
+  `ds_oringema` varchar(4) CHARACTER SET armscii8 COLLATE armscii8_bin DEFAULT NULL,
+  `ds_testea` varchar(3) NOT NULL,
+  `ds_corpele` varchar(10) NOT NULL,
+  `ds_calvo` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -68,7 +72,7 @@ CREATE TABLE `perfil` (
   `id_perfil` int(4) NOT NULL,
   `nm_perfil` varchar(30) NOT NULL,
   `ds_idade` int(3) DEFAULT NULL,
-  `ds_sexo` varchar(15) DEFAULT NULL,
+  `ds_sexo` varchar(10) DEFAULT NULL,
   `id_usuario` int(4) DEFAULT NULL,
   `id_caracteristicas` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -106,17 +110,20 @@ INSERT INTO `produtos` (`id_produtos`, `nm_produto`, `vl_produto`, `ds_oanimal`,
 
 CREATE TABLE `usuario` (
   `id_usuario` int(4) NOT NULL,
-  `ds_senha` varchar(40) NOT NULL,
-  `ds_email` varchar(30) NOT NULL
+  `ds_email` varchar(40) NOT NULL,
+  `ds_senha` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `ds_senha`, `ds_email`) VALUES
+INSERT INTO `usuario` (`id_usuario`, `ds_email`, `ds_senha`) VALUES
 (12, 'joaoielen@gmail.com', '123456'),
-(13, '', '');
+(13, '', ''),
+(14, 'leeodm@hotmail.com', '121213'),
+(15, 'leeodm@hotmail.com', '121213'),
+(16, 'leeloodm@hotmail.com', '121213');
 
 --
 -- Índices para tabelas despejadas
@@ -177,7 +184,7 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_usuario` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

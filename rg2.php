@@ -15,9 +15,9 @@
   </head>
   
   <body>
-    <h1>Be-UT</h1>
-    <h2>(Beauty User Targeting)</h2>
-    <h3>Faça seu cadastro para indicação de produtos:</h3>
+    <h1>Be-UT <br>
+    (Beauty User Targeting) <br>
+  Faça seu cadastro para indicação de produtos:</h1>
 
     <form action="login.php" method="POST">
       <label for="nome">Digite seu nome:</label>
@@ -28,7 +28,7 @@
 
       <label for="sexo">Qual seu sexo?</label>
       <select id="sexo" name="sexo" required>
-        <option value="Não respondido"></option>
+        <option value=""></option>
         <option value="Feminino">Feminino</option>
         <option value="Masculino">Masculino</option>
         <option value="Outro">Outro</option>
@@ -36,18 +36,22 @@
 
       <label for="tpcabelo">Qual o seu tipo de cabelo?</label>
       <select id="tpcabelo" name="tpcabelo" required>
-        <option value="Não respondido"></option>
+        <option value=""></option>
         <option value="Liso">Liso</option>
         <option value="Ondulado">Ondulado</option>
-        <option value="Cacheado">Cacheado</option>
+        <option value="Cacheado">Cacheado</option>  
         <option value="Crespo">Crespo</option>
       </select><br><br>
-      <label for="corcabelo">O seu cabelo tem quimica?</label>
-  <input type="text" id="corcabelo" name="corcabelo" required><br><br>
+      <label for="tpcabelo">O seu cabelo tem quimica?</label>
+      <select id="tpcabelo" name="tpcabelo" required>
+        <option value=""></option>
+        <option value="Sim">sim</option>
+        <option value="Não">Não</option>
+      </select><br><br>
 
   <label for="tppele">Qual o seu tipo de pele?</label>
   <select id="tppele" name="tppele" required>
-    <option value="Não respondido"></option>
+    <option value=""></option>
     <option value="Seca">Seca</option>
     <option value="Normal">Normal</option>
     <option value="Mista">Mista</option>
@@ -88,13 +92,12 @@
         margin-top: 50px;
         text-align: left;
         background-color: #ffffff;
-        padding: 20px;
+        padding: 20px;  
         border-radius: 10px;
       }
 
       h1 {
-        font-size: 36px;
-        font-weight: bold;
+        font-size: 24px;
         margin-top: 0;
       }
 
@@ -102,7 +105,7 @@
         background-color: #6D3BFF;
         color: #ffffff;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 30px;
         font-size: 18px;
         border-radius: 5px;
         cursor: pointer;

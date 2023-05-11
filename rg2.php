@@ -59,6 +59,20 @@
   </select>
   <br/>
   <br/>
+
+  <label for="veganos">Prefere produtos veganos?</label>
+    <select id="veganos" name="veganos" required>
+      <option value=""></option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select><br><br>
+
+    <label for="origemAnimal">Mostrar produtos de origem animal?</label>
+    <select id="origemAnimal" name="origemAnimal" required>
+      <option value=""></option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select><br><br>
   <input type="submit"  rel="next" href="login.php" name="gravar" value="Continue"/>
 </form>
 

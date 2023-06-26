@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Mar-2023 às 01:21
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Tempo de geração: 27-Jun-2023 às 00:47
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `banco do meteus`
+-- Banco de dados: `bando do meteus`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `caracteristicas`
---
-
-CREATE TABLE `caracteristicas` (
-  `id_caracteristicas` int(4) NOT NULL,
-  `ds_cabelo` varchar(15) DEFAULT NULL,
-  `ds_pele` varchar(15) DEFAULT NULL,
-  `ds_quimica` varchar(3) DEFAULT NULL,
-  `ds_oringema` varchar(4) CHARACTER SET armscii8 COLLATE armscii8_bin DEFAULT NULL,
-  `ds_testea` varchar(3) NOT NULL,
-  `ds_corpele` varchar(10) NOT NULL,
-  `ds_calvo` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,7 +31,7 @@ CREATE TABLE `compra` (
   `id_compra` int(4) NOT NULL,
   `id_produtos` int(4) DEFAULT NULL,
   `id_usuario` int(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -60,7 +43,7 @@ CREATE TABLE `fornecedora` (
   `id_fornecedora` int(4) NOT NULL,
   `nm_fornecedora` varchar(30) NOT NULL,
   `id_produtos` int(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -72,10 +55,10 @@ CREATE TABLE `perfil` (
   `id_perfil` int(4) NOT NULL,
   `nm_perfil` varchar(30) NOT NULL,
   `ds_idade` int(3) DEFAULT NULL,
-  `ds_sexo` varchar(10) DEFAULT NULL,
+  `ds_sexo` varchar(15) DEFAULT NULL,
   `id_usuario` int(4) DEFAULT NULL,
   `id_caracteristicas` int(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +72,7 @@ CREATE TABLE `produtos` (
   `vl_produto` float NOT NULL,
   `ds_oanimal` varchar(3) NOT NULL,
   `ds_test` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `produtos`
@@ -110,30 +93,30 @@ INSERT INTO `produtos` (`id_produtos`, `nm_produto`, `vl_produto`, `ds_oanimal`,
 
 CREATE TABLE `usuario` (
   `id_usuario` int(4) NOT NULL,
-  `ds_email` varchar(40) NOT NULL,
-  `ds_senha` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ds_senha` varchar(40) NOT NULL,
+  `ds_email` varchar(30) NOT NULL,
+  `Nome` varchar(50) DEFAULT NULL,
+  `Idade` int(11) DEFAULT NULL,
+  `Sexo` varchar(10) DEFAULT NULL,
+  `TipoDeCabelo` varchar(20) DEFAULT NULL,
+  `CabeloComQuimica` varchar(20) DEFAULT NULL,
+  `TipoDePele` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `ds_email`, `ds_senha`) VALUES
-(12, 'joaoielen@gmail.com', '123456'),
-(13, '', ''),
-(14, 'leeodm@hotmail.com', '121213'),
-(15, 'leeodm@hotmail.com', '121213'),
-(16, 'leeloodm@hotmail.com', '121213');
+INSERT INTO `usuario` (`id_usuario`, `ds_senha`, `ds_email`, `Nome`, `Idade`, `Sexo`, `TipoDeCabelo`, `CabeloComQuimica`, `TipoDePele`) VALUES
+(12, 'joaoielen@gmail.com', '123456', NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '', '', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'leeodm@hotmail.com', '121213', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'leeodm@hotmail.com', '121213', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'leeloodm@hotmail.com', '121213', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Índices para tabelas despejadas
 --
-
---
--- Índices para tabela `caracteristicas`
---
-ALTER TABLE `caracteristicas`
-  ADD PRIMARY KEY (`id_caracteristicas`);
 
 --
 -- Índices para tabela `compra`
@@ -173,12 +156,6 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
-
---
--- AUTO_INCREMENT de tabela `caracteristicas`
---
-ALTER TABLE `caracteristicas`
-  MODIFY `id_caracteristicas` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

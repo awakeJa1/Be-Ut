@@ -11,7 +11,6 @@
           <a class="header-menu-item">Recentes</a>
           <a class="header-menu-item">Carrinho</a>
           <a class="header-menu-item">Configurações</a>
-        <button class="logout-button" type="button" name="logout" style="color: #000;">Sign in/out</button>
       </nav>
   </header>
 
@@ -92,8 +91,6 @@ var TxtType = function(el, toRotate, period) {
     <br/><br/>
     <input type="submit" name="login" value="Login" class="login"/>
 </form>
-
-
 
 </form>
 </html>

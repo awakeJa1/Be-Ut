@@ -1,6 +1,3 @@
-<?php 
-include("../conn.php");
-?>
 
 <!DOCTYPE html>
 
@@ -28,15 +25,19 @@ include("../conn.php");
 <h3>Faça seu cadastro para indicação de produtos:</h3>
 </body>
 
-<form action="rg2.php" method="POST" style="font-family: inconsolata;">
-
-    <input type="text" name="email"
-    placeholder="email"/><br/><br/>
-
-    <input type="text" name="senha"
-    placeholder="senha"/><br/><br/>
-
+<form method="POST" style="font-family: inconsolata;">
+    <input type="text" name="email" placeholder="email" /><br/><br/>
+    <input type="password" name="senha" placeholder="senha" /><br/><br/>
+    <input type="text" name="nome" placeholder="nome" /><br/><br/>
+    <input type="text" name="idade" placeholder="idade" /><br/><br/>
+    <select name="sexo">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+    </select><br/><br/>
+    <input type="submit" name="grava" value="Continue" />
 </form>
+
 
 <div class="row">
     <p style="font-size: 20px; font-family: inconsolata;">
@@ -56,17 +57,30 @@ include("../conn.php");
 
 <!--abaixo é o começo da gravação de dados no banco-->
 <?php
+include("../conn.php");
 
-if(isset($_POST['grava'])){
-    $senha=$_POST['senha'];
-    $email=$_POST['email'];
-    $grava=$conn->prepare('INSERT 
-    INTO `usuario` (`id_usuario`, 
-    `ds_senha`, `ds_email`) VALUES 
-    (NULL, :pemail , :psenha);');
-    $grava->bindValue(':psenha',$senha);
-    $grava->bindValue(':pemail',$email);
+if (isset($_POST['grava'])) {
+  try {
+    $senha = $_POST['senha'];
+    $email = $_POST['email'];
+    $nome = $_POST['nome'];
+    $idade = $_POST['idade'];
+    $sexo = $_POST['sexo'];
+
+    $grava = $conn->prepare('INSERT INTO `usuario` (`id_usuario`, `ds_senha`, `ds_email`, `Nome`, `Idade`, `Sexo`) VALUES (NULL, :psenha, :pemail, :pnome, :pidade, :psexo);');
+    $grava->bindValue(':psenha', $senha);
+    $grava->bindValue(':pemail', $email);
+    $grava->bindValue(':pnome', $nome);
+    $grava->bindValue(':pidade', $idade);
+    $grava->bindValue(':psexo', $sexo);
     $grava->execute();
-}
 
+    // Redirecionar para rg2.php após a gravação
+    header('Location: rg2.php');
+    exit(); // Certifique-se de sair após o redirecionamento
+  } catch (PDOException $e) {
+    echo "Erro ao gravar os dados: " . $e->getMessage();
+  }
+}
 ?>
+

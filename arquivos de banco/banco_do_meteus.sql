@@ -98,9 +98,6 @@ CREATE TABLE `usuario` (
   `Nome` varchar(50) DEFAULT NULL,
   `Idade` int(11) DEFAULT NULL,
   `Sexo` varchar(10) DEFAULT NULL,
-  `TipoDeCabelo` varchar(20) DEFAULT NULL,
-  `CabeloComQuimica` varchar(20) DEFAULT NULL,
-  `TipoDePele` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

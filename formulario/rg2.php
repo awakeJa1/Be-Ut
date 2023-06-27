@@ -27,19 +27,6 @@
   Faça seu cadastro para indicação de produtos:</h1>
 
     <form action="../login.php" method="POST">
-      <label for="nome">Digite seu nome:</label>
-      <input type="text" id="nome" name="nome" required><br><br>
-
-      <label for="idade">Digite sua idade:</label>
-      <input type="number" id="idade" name="idade" required><br><br>
-
-      <label for="sexo">Qual seu sexo?</label>
-      <select id="sexo" name="sexo" required>
-        <option value=""></option>
-        <option value="Feminino">Feminino</option>
-        <option value="Masculino">Masculino</option>
-        <option value="Outro">Outro</option>
-      </select><br><br>
 
       <label for="tpcabelo">Qual o seu tipo de cabelo?</label>
       <select id="tpcabelo" name="tpcabelo" required>
@@ -89,3 +76,29 @@
   </body>
 </html>
 
+<?php
+include("../conn.php");
+
+if (isset($_POST['gravar'])) {
+  try {
+    $tpcabelo = $_POST['tpcabelo'];
+    $quimica = $_POST['quimica'];
+    $tppele = $_POST['tppele'];
+    $veganos = $_POST['veganos'];
+    $origemAnimal = $_POST['origemAnimal'];
+
+    $grava = $conn->prepare('INSERT INTO `caracteristicas` (`id_caracteristica`, `sexo`, `tpcabelo`, `quimica`, `tppele`, `veganos`, `origemAnimal`) VALUES (NULL, :tpcabelo, :quimica, :tppele, :veganos, :origemAnimal);');
+    $grava->bindValue(':tpcabelo', $tpcabelo);
+    $grava->bindValue(':quimica', $quimica);
+    $grava->bindValue(':tppele', $tppele);
+    $grava->bindValue(':veganos', $veganos);
+    $grava->bindValue(':origemAnimal', $origemAnimal);
+    $grava->execute();
+
+    echo "Dados gravados com sucesso!";
+  } catch (PDOException $e) {
+    echo "Erro ao gravar os dados: " . $e->getMessage();
+  }
+}
+
+?>

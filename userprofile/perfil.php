@@ -5,11 +5,12 @@ include("objetoperfil.php");
 // Verifique se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     // O usuário não está logado, redirecione para a página de login
-    header('Location: login.php');
+    header('Location: index.php');
     exit();
 }
 // Recupere os dados do usuário da sessão
 $usuario = $_SESSION['usuario'];
+
 ?>
 
 
@@ -74,12 +75,10 @@ $usuario = $_SESSION['usuario'];
 
 <div2> 
 <b class="info-conta">Informações pessoais</b> <!-- nome, email, telefone, etc -->
-  <p class="info-conta">Nome: Nome</p>
+  <p class="info-conta">Nome: <?php echo $nome; ?></p></p>
   <p class="info-conta">Email: <?php echo $usuario->ds_email; ?></p></p>
-  <p class="info-conta">Idade: XX</p>
-  <p class="info-conta">Sexo: Feminino/Masculino</p>
-  <p class="info-conta">Telefone:(41) 8002-8922</p>
-
+  <p class="info-conta">Idade: <?php echo $idade; ?></p></p>
+  <p class="info-conta">Sexo: <?php echo $sexo;?></p></p>
   
 </div2>
 
@@ -90,3 +89,7 @@ $usuario = $_SESSION['usuario'];
 </footer>
 
 </html>
+
+<?php
+
+
